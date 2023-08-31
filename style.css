@@ -1,0 +1,292 @@
+/** Importa a fonte da API de fontes do Google*/
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+/** Define as variáveis de CSS globais para serem acessadas em todo documento*/
+:root {
+  --Red: hsl(0, 100%, 66%);
+  --White: hsl(0, 0%, 100%);
+  --Light-grayish-violet: hsl(270, 3%, 87%);
+  --Dark-grayish-violet: hsl(279, 6%, 55%);
+  --Very-dark-violet: hsl(278, 68%, 11%);
+}
+/** Seleciona todos os elementos e seus filhos */
+*,*>*{
+  font-family: 'Space Grotesk', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/** Determina que o corpo da página vai ter pelo menos a altura total da janela em que for aberta */
+body{
+    min-height: 100vh;
+}
+/**Oculta os elementos de agradecimento e formulário dependendo do estado*/
+.hidden{
+    display: none !important;
+}
+/**Adiciona layout flexível e alinha os itens da div do container ao centro */
+.container{
+    display: flex;
+    align-items: center;
+}
+/** Define que a altura da seção esquerda tenha a altura da janela de exibição
+ * Que a largura seja 40% do container 
+ * Adiciona a imagem de fundo ao centro cobrindo totalmente a seção esquerda.
+ * Evita que imagem de fundo se repita
+*/
+.left_section{
+    min-height: 100vh;
+    width: 40%;
+    background-image: url('./images/backgroundDesktop.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+/** Define a posição dos elementos do cartão e adiciona layout flexível
+ * empilhando os elementos na vertical
+ * Define espaçamento entre os elementos filhos e posiciona os elementos
+ * na borda direita
+ * Aplica uma transformação para mover os elementos de volta 50% do seu próprio tamanho em ambas as direções, 
+ * centralizando a seção no meio do container
+ */
+.cards{
+    position: absolute;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    left: 100%;
+    transform: translate(-50%,-50%);
+}
+/** Define a posição da frente do cartão de acordo com o fluxo 
+ * E aplica ua transformação que desloca os elementos para a esquerda
+ */
+.front_card{
+    position: relative;
+    transform: translateX(-100px);
+}
+/**Posiciona o logo em relação a frente do cartão no canto superior direito*/
+.card_logo{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+/** Posiciona e estiliza o layout do número do cartão */
+#number{
+    position: absolute;
+    color: var(--White);
+    bottom: 5rem;
+    left: 1rem;
+    letter-spacing: 2px;
+}
+/** Posiciona o estiliza o layout da informações do cartão */
+.card_info{
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+    right: 3rem;
+    display: flex;
+    color: var(--White);
+    justify-content: space-between;
+}
+/**Posiciona a parte de trás do cartão */
+.back_card{
+    position: relative;
+}
+/** Posiciona e estiliza a mensagem de erro */
+.error{
+    border: 2px solid var(--Red);
+}
+.error_message{
+    gap: 0;
+}
+.error_message::after{
+    content: "cant't be blank";
+    color: var(--Red);
+    margin-top: .2rem;
+}
+/** Posiciona e estiliza o CVC do cartão */
+#cvc{
+    position: absolute;
+    right: 3.5rem;
+    top: 7rem;
+    color: var(--Light-grayish-violet);
+}
+/** Aplica layout flexível à seção direita, alinhando os tens no
+ * centro e define que a largura deve ocupar todo espaço disponível
+*/
+.right_section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+/** Posiciona e estiliza o formulário, criando uma grid que organia os campos de entrada*/
+.right_section form{
+   display: grid;
+   gap: 1rem;
+   width: 350px;
+   grid-template-columns: repeat(2,1fr);
+   grid-template-rows: repeat(4,1fr);
+}
+/** Posiciona e estiliza os rótulos do formulário */
+label{
+    color: var(--Very-dark-violet);
+    margin-bottom: .3rem;
+    text-transform: uppercase;
+}
+/** Posiciona e estiliza os campos de entrada do formulário */
+input{
+    padding: .5rem;
+    font-size: 18px;
+    border: 1px solid var(--Dark-grayish-violet);
+    border-radius: 6px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/** Posiciona e estiliza os placeholders do formulário */
+input::placeholder{
+    font-family: inherit;
+    color: var(--Dark-grayish-violet);
+}
+input:focus{
+    outline-color: hsl(249, 99%, 64%);
+}
+/** Posiciona e estiliza as grids */
+.grid_1{
+    display: flex;
+    flex-direction: column;
+    grid-column: 2 span;
+}
+.grid_2{
+    display: flex;
+    flex-direction: column;
+    grid-column: 2 span;
+}
+.grid_3{
+    display: flex;
+    flex-direction: column;
+}
+.grid_4{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 span;
+}
+/** Posiciona as informações do cartão */
+.card_information{
+    display: flex;
+    grid-column: 2 span;
+    gap: 1rem;
+}
+#card_date{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 span;
+}
+#card_date .two_inp{
+    display: flex;
+}
+.two_inp div{
+    flex-direction: column;
+}
+#card_date div input{
+    width: 70px;
+    margin-inline: .5rem;
+    margin-left: 0;
+}
+#card_cvc{
+    width: 100%;
+}
+/** Posiciona e estiliza o botão de submissão do formulário
+ * Define o cursor do mouse quando sob o botão como um ícone de ponteiro,
+ * mostrando que o botão é clicável.
+*/
+form button{
+    grid-column: 2 span;
+    font-size: 18px;
+    height: 50px;
+    color: var(--White);
+    border-radius: 6px;
+    background: var(--Very-dark-violet);
+    cursor: pointer;
+}
+/**Posiciona e estiliza a mensagem de agradecimento */
+.thank{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.thank h1{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.thank p{
+    font-size: 18px;
+    color: var(--Dark-grayish-violet);
+}
+.thank button{
+    color: var(--White);
+    width: 100%;
+    border-radius: 6px;
+    padding: 1rem;
+    font-size: 18px;
+    background-color: var(--Very-dark-violet);
+    cursor: pointer;
+}
+
+/**Dimensões para quando a largura da tela for igual ou menor que 1023 px */
+@media screen and (max-width:1023px) {
+    .front_card .card_container img,.front_card,.back_card img,.back_card{
+        width: 300px;
+    }
+    .card_logo{
+        width: 50px;
+    }
+    #number{
+        font-size: 1.1rem;
+    }
+    #cvc{
+        top: 42%;
+        right: 12%;
+    }
+}
+/**Dimensões para quando a largura da tela for igual ou menor que 767 px */
+@media screen and (max-width:767px) {
+    .container{
+        flex-direction: column;
+    }
+    .front_card .card_container img,.front_card,.back_card img,.back_card{
+        width: 280px;
+    }
+    .left_section{
+        width: 100%;
+        min-height: 30vh;
+        background-image: url('./images/backgroundMobile.png');
+    }
+    .cards{
+        flex-direction: column-reverse;
+        left: 61%;
+        top: 60%;
+        gap: 0;
+    }
+    .back_card{
+        transform: translateY(70px);
+    }
+    .front_card{
+        z-index: 100;
+    }
+    .right_section{
+        margin-top: 6rem;
+    }
+    
+}
+
+
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--Ajusta a largura da página para o tamanho da tela -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Formulário de Cartão de Crédito</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="left_section">
+          <div class="cards">
+            <!--Exibe a frente do cartão de crédito, com logotipo, número do cartão, nome do titular e data de validade-->
+            <div class="front_card">
+              <img
+                src="./images/logo.svg"
+                alt="card-logo"
+                class="card_logo"
+              />
+              <div class="card_container">
+                <img src="./images/cardFront.png" alt="front-card" />
+                <h1 id="number">0000 0000 0000 0000</h1>
+                <div class="card_info">
+                  <span id="name">Jane Appleseed</span>
+                  <span id="date">
+                    <span id="month">00</span>
+                    /
+                    <span id="year">00</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!--Exibe o verso do cartão de crédito, com o CVC-->
+            <div class="back_card">
+              <img src="./images/cardBack.png" alt="back-card" />
+              <span id="cvc">000</span>
+            </div>
+          </div>
+        </div>
+        <!--Seção do formulário no qual o usuário colocará suas informações-->
+        <div class="right_section">
+          <form>
+            <div class="grid_1">
+              <label for="card_name">Cardholder Name</label>
+              <input
+                type="text"
+                placeholder="e.g. Jane Appleseed"
+                id="card_name"
+                required
+              />
+            </div>
+            <div class="grid_2">
+                <!--Cria um campo de entrada numérico obrigatório para o numero do cartão que deve ter exatamente 16 dígitos-->
+              <label for="card_number">Card Number</label>
+              <input
+                type="number"
+                oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                minlength="16"
+                maxlength="16"
+                placeholder="e.g. 1234 5678 9123 0000"
+                id="card_number"
+                required
+              />
+            </div>
+            <div class="card_information">
+                <!-- Cria um campo de entrada numérico obrigatório para data de expiração do cartão, com mês e ano, 2 dígitos cada -->
+              <div id="card_date">
+                <label for="card_date">Exp. Date (MM/YY)</label>
+                <div class="two_inp">
+                  <div>
+                    <input
+                      type="number"
+                      placeholder="MM"
+                      oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="2"
+                      maxlength="2"
+                      id="card_month"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <input
+                    oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      type="number"
+                      minlength="2"
+                      maxlength="2"
+                      placeholder="YY"
+                      id="card_year"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="grid_4">
+                <!-- Cria um campo de entrada numérico obrigatório para o CVC do cartão, que deve ter exatamente 3 dígitos -->
+                <label for="card_cvc">CVC</label>
+                <input type="number" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" placeholder="e.g. 123" id="card_cvc" required />
+              </div>
+            </div>
+            <button id="submit_btn" type="submit">Confirm</button>
+          </form>
+          <!-- Seção oculta que será exibida após o envio do formulário-->
+          <div class="thank hidden">
+            <img src="./images/check.svg" alt="Completed" />
+            <h1>Thank you!</h1>
+            <p>We've added your card details</p>
+            <button>Continue</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Início do estado concluído -->
+    <script src="https://unpkg.com/imask"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
